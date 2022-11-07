@@ -1,5 +1,6 @@
 package pe.isil.peluqueriacanina.logica;
 
+import java.util.List;
 import pe.isil.peluqueriacanina.persistencia.ControladoraPersistencia;
 
 public class Controladora {
@@ -22,7 +23,17 @@ public class Controladora {
         masco.setAtencion_especial(atenEspecial); 
         masco.setUnDuenio(duenio);
         
-        controlPersis.guardar(duenio, masco);
+        controlPersis.guardar(duenio,masco); }
+
+    public List<Mascota> traerMascota() {
+       
+        return controlPersis.traerMascotas(); 
         
     }
+
+    public void borrarMascota(int num_cliente) {
+        controlPersis.borrarMascotas(num_cliente);
+    }
+
+   
 }
