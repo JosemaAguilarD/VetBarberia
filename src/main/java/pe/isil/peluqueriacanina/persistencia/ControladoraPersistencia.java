@@ -29,4 +29,38 @@ public class ControladoraPersistencia {
         }
     }
 
+     public Mascota traerUnaMascota(int num_cliente)  {
+           return mascotaJPA.findMascota(num_cliente);
+       }
+     
+//       public void modificar(Duenio duenio, Mascota mascota) {
+//           
+//           try {
+//                  duenioJPA.edit(duenio);
+//                  mascotaJPA.edit(mascota);
+//        } catch (Exception ex) {
+//            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//       }
+
+    public void modificarMascota(Mascota masco) {
+        try {
+            mascotaJPA.edit(masco);
+        } catch (Exception ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public Duenio buscarDuenio(int id_duenio) {
+        return duenioJPA.findDuenio(id_duenio);
+    }      
+
+    public void modificarDuenio(Duenio dueno) {
+        try {
+            duenioJPA.edit(dueno);
+        } catch (Exception ex) {
+            Logger.getLogger(ControladoraPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+     
 }

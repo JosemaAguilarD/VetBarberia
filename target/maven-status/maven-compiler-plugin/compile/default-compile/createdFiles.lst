@@ -1,7 +1,11 @@
+pe\isil\peluqueriacanina\igu\ModificarDatos$4.class
 pe\isil\peluqueriacanina\igu\CargaDatos$4.class
 pe\isil\peluqueriacanina\logica\Mascota_.class
+pe\isil\peluqueriacanina\igu\ModificarDatos$2.class
+pe\isil\peluqueriacanina\igu\VerDatos$4.class
 pe\isil\peluqueriacanina\logica\Controladora.class
 pe\isil\peluqueriacanina\igu\VerDatos$1.class
+pe\isil\peluqueriacanina\igu\ModificarDatos.class
 pe\isil\peluqueriacanina\logica\Mascota.class
 pe\isil\peluqueriacanina\persistencia\DuenioJpaController.class
 pe\isil\peluqueriacanina\igu\VerDatos$2.class
@@ -16,9 +20,11 @@ pe\isil\peluqueriacanina\igu\Principal$1.class
 pe\isil\peluqueriacanina\igu\VerDatos.class
 pe\isil\peluqueriacanina\PeluqueriaCanina.class
 pe\isil\peluqueriacanina\persistencia\exceptions\PreexistingEntityException.class
+pe\isil\peluqueriacanina\igu\ModificarDatos$1.class
 pe\isil\peluqueriacanina\logica\Duenio_.class
 pe\isil\peluqueriacanina\igu\CargaDatos$2.class
 pe\isil\peluqueriacanina\igu\Principal$2.class
+pe\isil\peluqueriacanina\igu\ModificarDatos$3.class
 pe\isil\peluqueriacanina\igu\VerDatos$3.class
 pe\isil\peluqueriacanina\persistencia\exceptions\IllegalOrphanException.class
 pe\isil\peluqueriacanina\persistencia\MascotaJpaController.class

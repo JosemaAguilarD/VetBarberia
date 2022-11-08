@@ -1,6 +1,7 @@
 D:\TodoJava\PeluqueriaCanina\src\main\java\pe\isil\peluqueriacanina\logica\Duenio.java
 D:\TodoJava\PeluqueriaCanina\src\main\java\pe\isil\peluqueriacanina\PeluqueriaCanina.java
 D:\TodoJava\PeluqueriaCanina\src\main\java\pe\isil\peluqueriacanina\persistencia\exceptions\PreexistingEntityException.java
+D:\TodoJava\PeluqueriaCanina\src\main\java\pe\isil\peluqueriacanina\igu\ModificarDatos.java
 D:\TodoJava\PeluqueriaCanina\src\main\java\pe\isil\peluqueriacanina\igu\VerDatos.java
 D:\TodoJava\PeluqueriaCanina\src\main\java\pe\isil\peluqueriacanina\persistencia\exceptions\NonexistentEntityException.java
 D:\TodoJava\PeluqueriaCanina\src\main\java\pe\isil\peluqueriacanina\persistencia\MascotaJpaController.java

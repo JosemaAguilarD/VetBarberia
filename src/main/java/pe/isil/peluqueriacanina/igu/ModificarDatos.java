@@ -1,23 +1,26 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package pe.isil.peluqueriacanina.igu;
 
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import pe.isil.peluqueriacanina.logica.Controladora;
+import pe.isil.peluqueriacanina.logica.Mascota;
 
 /**
  *
  * @author 51992
  */
-public class CargaDatos extends javax.swing.JFrame {
+public class ModificarDatos extends javax.swing.JFrame {
 
-          Controladora control = new Controladora();
+          Controladora control = null;
+          Mascota masco;
+          int num_cliente;
 
-    public CargaDatos() {
+    public ModificarDatos(int num_cliente) {
+        control = new Controladora();
+//        this.num_cliente = num_cliente;
         initComponents();
+        cargarDatos(num_cliente);
     }
 
     /**
@@ -56,7 +59,7 @@ public class CargaDatos extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
-        jLabel1.setText("Carga de Datos");
+        jLabel1.setText("Modificar Datos");
 
         jLabel3.setText("Nombre:");
 
@@ -116,7 +119,7 @@ public class CargaDatos extends javax.swing.JFrame {
                                                 .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addComponent(cmbAlergico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addComponent(txtColor, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                .addGap(0, 104, Short.MAX_VALUE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel8)
@@ -138,7 +141,7 @@ public class CargaDatos extends javax.swing.JFrame {
                                 .addComponent(txtNombreDuenio, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addGap(29, 101, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -190,7 +193,7 @@ public class CargaDatos extends javax.swing.JFrame {
         });
 
         btnGuardar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnGuardar.setText("Guardar");
+        btnGuardar.setText("Guardar Cambios");
         btnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGuardarActionPerformed(evt);
@@ -296,13 +299,16 @@ public class CargaDatos extends javax.swing.JFrame {
        String nombreDuenio = txtNombreDuenio.getText();
        String celDuenio = txtCelularDuenio.getText();
 
-        control.guardar(nombreMascota, raza, color, observaciones, alergico, atenEspecial, nombreDuenio,celDuenio);
+        control.modificarMascota(masco,nombreMascota, raza, color, observaciones, alergico, atenEspecial, nombreDuenio,celDuenio);
         
-        JOptionPane optionPane = new JOptionPane("Se guadó correctamente");
-        optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
-        JDialog dialog = optionPane.createDialog("Guadado exitoso");
-        dialog.setAlwaysOnTop(true);
-        dialog.setVisible(true);
+        mostrarMensaje("Se editó correctamente","Info","Edición Correcta");
+        VerDatos pantalla = new VerDatos();
+        pantalla.setVisible(true);
+        pantalla.setLocationRelativeTo(null);
+        //Para cerrar la ventana
+        this.dispose();
+        
+        
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     /**
@@ -335,4 +341,42 @@ public class CargaDatos extends javax.swing.JFrame {
     private java.awt.TextArea txtObservaciones;
     private java.awt.TextField txtRaza;
     // End of variables declaration//GEN-END:variables
+
+    private void cargarDatos(int num_cliente) {
+        this.masco = control.traerUnaMascota(num_cliente);
+        
+        txtNombre.setText(masco.getNombre());
+        txtRaza.setText(masco.getRaza());
+        txtColor.setText(masco.getColor());
+        txtNombreDuenio.setText(masco.getUnDuenio().getNombre());
+        txtCelularDuenio.setText(masco.getUnDuenio().getCelularDuenio());
+        txtObservaciones.setText(masco.getObservaciones());
+        if(masco.getAlergico().equals("SI")){
+            cmbAlergico.setSelectedIndex(1);
+        }
+        else if(masco.getAlergico().equals("NO")){
+           cmbAlergico.setSelectedIndex(2);
+        }
+        
+        if(masco.getAtencion_especial().equals("SI")){
+            cmbAtencionEspecial.setSelectedIndex(1);
+        }
+        else if(masco.getAtencion_especial().equals("NO")){
+           cmbAtencionEspecial.setSelectedIndex(2);
+        }
+        
+    }
+    
+      public void mostrarMensaje(String mensaje, String tipo, String titulo){
+        JOptionPane optionPane = new JOptionPane(mensaje);
+        if(tipo.equals("Info")){
+        optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+        }
+        else if(tipo.equals("Error")){
+         optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
+        }
+        JDialog dialog = optionPane.createDialog(titulo);
+        dialog.setAlwaysOnTop(true);
+        dialog.setVisible(true);
+    }
 }
